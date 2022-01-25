@@ -47,8 +47,8 @@ function Title(props) {
 	);
 }
 
-export default function PaginaInicial() {
-	const username = 'peas';
+export default function HomePage() {
+	const username = 'rafael-holanda';
 
 	return (
 		<>
