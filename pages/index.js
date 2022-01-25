@@ -1,10 +1,11 @@
 function Title(props){
 	// "props" é a propriedade de Title (vai pegar o que estiver dentro de <Title></Title>)
+	const Tag = props.tag;
 	return(
 		<>
-			<h1>{props.children}</h1>
+			<Tag>{props.children}</Tag>
 			<style jsx>{`
-				h1{
+				${Tag}{
 					color: red;
 					font-size: 24px;
 					font-height: 600;
@@ -19,7 +20,7 @@ function HomePage(){
 	// JSX
     return(
 		<div>
-			<Title>Boas vindas!!</Title>
+			<Title tag="h2">Boas vindas!!</Title>
 			<h2>Discord - Alura Matrix</h2>
 		</div>
 	)
