@@ -47,6 +47,8 @@ function Title(props) {
 	);
 }
 
+// backgroundColor: appConfig.theme.colors.primary[500],
+
 export default function HomePage() {
 	const username = 'rafael-holanda';
 
@@ -56,7 +58,6 @@ export default function HomePage() {
 			<Box
 				styleSheet={{
 					display: 'flex', alignItems: 'center', justifyContent: 'center',
-					backgroundColor: appConfig.theme.colors.primary[500],
 					backgroundImage: 'url(https://images.pexels.com/photos/2346594/pexels-photo-2346594.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)',
 					backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
 				}}
