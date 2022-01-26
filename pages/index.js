@@ -57,7 +57,7 @@ export default function HomePage() {
 				styleSheet={{
 					display: 'flex', alignItems: 'center', justifyContent: 'center',
 					backgroundColor: appConfig.theme.colors.primary[500],
-					backgroundImage: 'url(https://virtualbackgrounds.site/wp-content/uploads/2020/08/the-matrix-digital-rain.jpg)',
+					backgroundImage: 'url(https://images.pexels.com/photos/2346594/pexels-photo-2346594.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)',
 					backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
 				}}
 			>
