@@ -83,6 +83,10 @@ export default function HomePage() {
 					{/* Formulário */}
 					<Box
 						as="form"
+						onSubmit={function(eventInfos){
+							eventInfos.preventDefault();
+							console.log("Alguém submeteu o form");
+						}}
 						styleSheet={{
 							display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
 							width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
