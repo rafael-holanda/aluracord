@@ -1,35 +1,7 @@
 import appConfig from '../config.json';
 import React from 'react';
+import {useRouter} from 'next/router';
 import { Box, Button, Text, TextField, Image } from '@skynexui/components';
-
-function GlobalStyle() {
-	return (
-		<style global jsx>{`
-			*{
-				margin: 0;
-				padding: 0;
-				box-sizing: border-box;
-				list-style: none;
-      		}
-			body {
-				font-family: 'Open Sans', sans-serif;
-			}
-			/* App fit Height */ 
-			html, body, #__next {
-				min-height: 100vh;
-				display: flex;
-				flex: 1;
-			}
-			#__next {
-				flex: 1;
-			}
-			#__next > * {
-				flex: 1;
-			}
-			/* ./App fit Height */ 
-		`}</style>
-	)
-}
 
 function Title(props) {
 	// "props" é a propriedade de Title (vai pegar o que estiver dentro de <Title></Title>)
@@ -54,10 +26,11 @@ export default function HomePage() {
 	// const username = 'rafael-holanda';
 	const [username, setUsername] = React.useState('rafael-holanda');
 	// console.log('stateDoReact', stateDoReact);
+	const routing = useRouter();
+	// console.log(routing);
 
-	return (
+	return(
 		<>
-			<GlobalStyle />
 			<Box
 				styleSheet={{
 					display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -86,6 +59,8 @@ export default function HomePage() {
 						onSubmit={function(eventInfos){
 							eventInfos.preventDefault();
 							console.log("Alguém submeteu o form");
+							// window.location.href = '/chat';
+							routing.push('/chat');
 						}}
 						styleSheet={{
 							display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
