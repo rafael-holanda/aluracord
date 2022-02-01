@@ -12,8 +12,8 @@ const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 function realTimeMessages(){
 	return supabaseClient
 		.from('mensagens')
-		.on('INSERT', (oQueVeio) => {
-			console.log('Houve uma nova mensagem', oQueVeio);
+		.on('INSERT', (liveInsert) => {
+			adicionaMensagem(liveInsert.new);
 		})
 		.subscribe();
 }
@@ -58,7 +58,9 @@ export default function ChatPage() {
 				//console.log('Dados da consulta: ', data);
 				setListaDeMensagens(data);
 			});
-		realTimeMessages();
+		realTimeMessages((novaMensagem) => {
+			//handleNovaMensagem(novaMensagem)
+		});
 	}, []);
 	
 	
@@ -74,13 +76,13 @@ export default function ChatPage() {
 			.insert([
 				mensagem
 			])
-			.then(({data}) => {
+			/*.then(({data}) => {
 				//console.log('Criando mensagem: ', data);
 				setListaDeMensagens([
 					data[0],
 					...listaDeMensagens,			
 				]);
-			});
+			});*/
 
 		
 		setMensagem('');
