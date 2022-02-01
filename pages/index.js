@@ -60,7 +60,7 @@ export default function HomePage() {
 							eventInfos.preventDefault();
 							console.log("Alguém submeteu o form");
 							// window.location.href = '/chat';
-							routing.push('/chat');
+							routing.push(`/chat?username=${username}`);
 						}}
 						styleSheet={{
 							display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
