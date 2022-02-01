@@ -12,8 +12,8 @@ const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 function realTimeMessages(){
 	return supabaseClient
 		.from('mensagens')
-		.on('INSERT', () => {
-			console.log('Houve uma nova mensagem');
+		.on('INSERT', (oQueVeio) => {
+			console.log('Houve uma nova mensagem', oQueVeio);
 		})
 		.subscribe();
 }
@@ -55,7 +55,7 @@ export default function ChatPage() {
 			.select('*')
 			.order('id', {ascending: false})
 			.then(({data}) => {
-				console.log('Dados da consulta: ', data);
+				//console.log('Dados da consulta: ', data);
 				setListaDeMensagens(data);
 			});
 		realTimeMessages();
@@ -75,7 +75,7 @@ export default function ChatPage() {
 				mensagem
 			])
 			.then(({data}) => {
-				console.log('Criando mensagem: ', data);
+				//console.log('Criando mensagem: ', data);
 				setListaDeMensagens([
 					data[0],
 					...listaDeMensagens,			
@@ -168,7 +168,7 @@ export default function ChatPage() {
 						{/*Callback*/}
 						<ButtonSendSticker 
 							onStickerClick={(sticker) => {
-								console.log('[USANDO O COMPONENTE] Salva esse sticker no banco');
+								//console.log('[USANDO O COMPONENTE] Salva esse sticker no banco');
 								handleNovaMensagem(':sticker:' + sticker);
 							}}
 						/>
