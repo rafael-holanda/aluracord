@@ -2,11 +2,21 @@ import { Box, Text, TextField, Image, Button } from '@skynexui/components';
 import React from 'react';
 import appConfig from '../config.json';
 import {useRouter} from 'next/router';
-import {createClient} from '@supabase/supabase-js'
+import {createClient} from '@supabase/supabase-js';
+import { ButtonSendSticker } from '../src/components/ButtonSendSticker.js';
 
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzQ2NzA4MywiZXhwIjoxOTU5MDQzMDgzfQ.DbnKXZzN5lXRNIlXD2cAlPetDonbqGQUhfSYFNdqAmw';
 const SUPABASE_URL = 'https://rmfupwtajnwivlurwcav.supabase.co';
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+
+function realTimeMessages(){
+	return supabaseClient
+		.from('mensagens')
+		.on('INSERT', () => {
+			console.log('Houve uma nova mensagem');
+		})
+		.subscribe();
+}
 
 export default function ChatPage() {
 	const routing = useRouter();
@@ -14,7 +24,18 @@ export default function ChatPage() {
 	//console.log('routing.query',routing.query);
 	//console.log('usuarioLogado', usuarioLogado);
 	const [mensagem, setMensagem] = React.useState('');
-	const [listaDeMensagens, setListaDeMensagens] = React.useState([]);
+	const [listaDeMensagens, setListaDeMensagens] = React.useState([
+		/*{
+			id: 1,
+			de: 'omariosouto',
+			texto: ':sticker: https://www.alura.com.br/imersao-react-4/assets/figurinhas/Figurinha_3.png'
+		},
+		{
+			id: 2,
+			de: 'omariosouto',
+			texto: 'teste'
+		}*/
+	]);
 
 	// Sua lógica vai aqui
 	// Usuário
@@ -37,6 +58,7 @@ export default function ChatPage() {
 				console.log('Dados da consulta: ', data);
 				setListaDeMensagens(data);
 			});
+		realTimeMessages();
 	}, []);
 	
 	
@@ -143,6 +165,13 @@ export default function ChatPage() {
 								color: appConfig.theme.colors.neutrals[200],
 							}}
 						/>
+						{/*Callback*/}
+						<ButtonSendSticker 
+							onStickerClick={(sticker) => {
+								console.log('[USANDO O COMPONENTE] Salva esse sticker no banco');
+								handleNovaMensagem(':sticker:' + sticker);
+							}}
+						/>
 					</Box>
 				</Box>
 			</Box>
@@ -225,7 +254,14 @@ function MessageList(props) {
 								{(new Date().toLocaleDateString())}
 							</Text>
 						</Box>
-						{mensagem.texto}
+						{/*Condicional: {mensagem.texto.startsWith(':sticker:').toString()}*/}
+						{mensagem.texto.startsWith(':sticker:') 
+							? (
+								<Image src={mensagem.texto.replace(':sticker:', '')}/>
+							) : (
+								mensagem.texto
+							)}
+							{/*{mensagem.texto}*/}
 					</Text>
 				);
 			})}
