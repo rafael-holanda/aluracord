@@ -81,7 +81,7 @@ export default function ChatPage() {
 				mensagem
 			])
 			.then(({data}) => {
-				console.log('Criando mensagem: ', data);
+				// console.log('Criando mensagem: ', data);
 			});
 
 		
