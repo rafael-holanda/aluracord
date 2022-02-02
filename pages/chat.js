@@ -60,7 +60,10 @@ export default function ChatPage() {
 			});
 		realTimeMessages((novaMensagem) => {
 			console.log('Nova mensagem: ', novaMensagem);
-			//handleNovaMensagem(novaMensagem)
+			setListaDeMensagens([
+				data[0],
+				...listaDeMensagens,			
+			]);*/
 		});
 	}, []);
 	
@@ -79,10 +82,6 @@ export default function ChatPage() {
 			])
 			.then(({data}) => {
 				console.log('Criando mensagem: ', data);
-				/*setListaDeMensagens([
-					data[0],
-					...listaDeMensagens,			
-				]);*/
 			});
 
 		
