@@ -72,19 +72,20 @@ export default function HomePage() {
 							{appConfig.name}
 						</Text>
 
-						<input
-							type="text"
-							value={username}
-							onChange={function(event){
-								console.log("O usuário digitou", event.target.value)
-								// Onde tá o valor?
-								const valor = event.target.value;
-								// Trocar o valor da variável
-								// Através do React
-								setUsername(valor);
-							}}
-						/>
-						{/*<TextField
+						
+						<TextField
+							<input
+								type="text"
+								value={username}
+								onChange={function(event){
+									console.log("O usuário digitou", event.target.value)
+									// Onde tá o valor?
+									const valor = event.target.value;
+									// Trocar o valor da variável
+									// Através do React
+									setUsername(valor);
+								}}
+							/>
 							fullWidth
 							textFieldColors={{
 								neutral: {
@@ -94,7 +95,7 @@ export default function HomePage() {
 									backgroundColor: appConfig.theme.colors.neutrals[800],
 								},
 							}}
-						/>*/}
+						/>
 						<Button
 							type='submit'
 							label='Entrar'
