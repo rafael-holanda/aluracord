@@ -9,7 +9,7 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5v
 const SUPABASE_URL = 'https://rmfupwtajnwivlurwcav.supabase.co';
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
-function realTimeMessages(){
+function realTimeMessages(adicionaMensagem){
 	return supabaseClient
 		.from('mensagens')
 		.on('INSERT', (liveInsert) => {
