@@ -74,7 +74,7 @@ export default function HomePage() {
 
 						
 						<TextField
-							<input
+							input
 								type="text"
 								value={username}
 								onChange={function(event){
@@ -85,7 +85,6 @@ export default function HomePage() {
 									// Através do React
 									setUsername(valor);
 								}}
-							/>
 							fullWidth
 							textFieldColors={{
 								neutral: {
