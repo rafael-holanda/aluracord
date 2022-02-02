@@ -61,7 +61,7 @@ export default function ChatPage() {
 		realTimeMessages((novaMensagem) => {
 			console.log('Nova mensagem: ', novaMensagem);
 			setListaDeMensagens([
-				data[0],
+				novaMensagem,
 				...listaDeMensagens,			
 			]);
 		});
