@@ -80,9 +80,9 @@ export default function ChatPage() {
 			.insert([
 				mensagem
 			])
-			// .then(({data}) => {
-				// console.log('Criando mensagem: ', data);
-			// });
+			.then(({data}) => {
+				console.log('Criando mensagem: ', data);
+			});
 
 		
 		setMensagem('');
