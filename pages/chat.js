@@ -63,7 +63,7 @@ export default function ChatPage() {
 			setListaDeMensagens([
 				data[0],
 				...listaDeMensagens,			
-			]);*/
+			]);
 		});
 	}, []);
 	
