@@ -5,7 +5,8 @@ import {useRouter} from 'next/router';
 import {createClient} from '@supabase/supabase-js';
 import { ButtonSendSticker } from '../src/components/ButtonSendSticker.js';
 
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzQ2NzA4MywiZXhwIjoxOTU5MDQzMDgzfQ.DbnKXZzN5lXRNIlXD2cAlPetDonbqGQUhfSYFNdqAmw';
+/* Needs database key to work. */
+/* const SUPABASE_ANON_KEY =; */
 const SUPABASE_URL = 'https://rmfupwtajnwivlurwcav.supabase.co';
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
